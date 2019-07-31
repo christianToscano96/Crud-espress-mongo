@@ -1,3 +1,5 @@
+const path = require('path');
+
 const express = require('express');
 const loger = require('morgan');
 //peticiones post
@@ -9,7 +11,8 @@ const indexRoutes = require('./routes/index');
 
 //settings
 app.set('port', process.env.PORT || 3000);
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //midlewares se ejecutan peticiones 
 app.use(loger('dev'));
