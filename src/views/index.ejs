@@ -12,8 +12,20 @@
     <div class="container">
         <h1><%= title %></h1>
 
-        <form action="">
+        <form action="/add" method="POST">
+            <legend>
+                Add a Task
+            </legend>
 
+            <div class="form-group">
+                <input type="text" id="title" class="form-control" name="title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="description" id="" cols="50" rows="1" placeholder="Add a Description"></textarea>
+            </div>
+            <button class="btn btn-primary">
+                Add
+            </button>
         </form>
         <hr>
 
@@ -28,10 +40,14 @@
             </thead>
             <tbody>
                 <% for (var i = 0; i < task.legth; i++) {%>
-                    
+
                 <% }%>    
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.getElementById('title').focus();
+    </script>
 </body>
 </html>
