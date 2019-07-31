@@ -9,6 +9,15 @@
 
 </head>
 <body>
+    <style>
+        body{
+            color: white;
+            background: #4776E6;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
     <div class="container">
         <h1><%= title %></h1>
 
@@ -23,13 +32,13 @@
             <div class="form-group">
                 <textarea class="form-control" name="description" id="" cols="50" rows="1" placeholder="Add a Description"></textarea>
             </div>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary col-12">
                 Add
             </button>
         </form>
         <hr>
 
-        <table class="table table-bordered table-hover">
+        <table class="table table-hover text-white">
             <thead>
                 <tr>
                     <th>#</th>
@@ -47,8 +56,13 @@
                         </td>
                         <td><%= tasks[i].description %></td>
                         <td>
-                            <a href="">Done</a>
-                            <a href="">Delete</a>
+                            <a 
+                            class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark' %>"
+                            href="/turn/<%= tasks[i]._id %>">Done</a>
+                            <a 
+                            id="delete"
+                            class="btn btn-danger"
+                            href="/delete/<%= tasks[i]._id %>">Delete</a>
                         </td>
                     </tr>
                 <% }%>    
@@ -58,6 +72,13 @@
 
     <script>
         document.getElementById('title').focus();
+        document.getElementById('delete').addEventListener('click', function(e){
+            let response = confirm('are you sure to delete?');
+            if (!response) {
+                e.preventDefault();
+            }
+        });
+        
     </script>
 </body>
 </html>
