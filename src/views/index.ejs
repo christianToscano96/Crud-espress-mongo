@@ -12,7 +12,7 @@
     <div class="container">
         <h1><%= title %></h1>
 
-        <form action="/add" method="POST">
+        <form action="/add" method="post">
             <legend>
                 Add a Task
             </legend>
@@ -39,8 +39,18 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (var i = 0; i < task.legth; i++) {%>
-
+                <% for (var i = 0; i < tasks.length; i++) {%>
+                    <tr>
+                        <td><%= i + 1%></td>
+                        <td>
+                            <strong><%= tasks[i].title %></strong>
+                        </td>
+                        <td><%= tasks[i].description %></td>
+                        <td>
+                            <a href="">Done</a>
+                            <a href="">Delete</a>
+                        </td>
+                    </tr>
                 <% }%>    
             </tbody>
         </table>
